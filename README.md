@@ -10,11 +10,14 @@ stop2go is a program designed to check for polymorphisms on stop codons that cha
 
 ## Usage
 
-This program needs the following arguments to run:
+To run stop2go you have to use stop2go.sh with the following arguments to run:
 
 * --input (-i):   input file for the program to work. List of transcripts for the program to work. Ony ENSEMBL transcript IDs in the form ENST00000426466 are admitted.
+
 * --annot (-an):  annotation file. The annotation format admitted is GTF format.
+
 * --folder (-fo):  folder where FASTA files with the sequence of the chromosomes are stored.
+
 * --freq (-fr):  VCF file containing the frequences (only accepts 1 file).By default stop2go assumes that the frequency tags are the following: AFR_AF, EUR_AF, ASN_AF, AMR_AF. They will be displayed in this order. If you use your own tags they will be displayed in the same order you input them.
 
 Please, be aware that the fasta file of the chromosomes has to match the chromosome name on the gtf file (typically in the first field). For example, if the annotation file has "chr1" the chromosome fasta file has to be "chr1.fa". Otherwise the program will not work
@@ -58,29 +61,28 @@ output.bed: BED file with all the stop codon positions to intersect with VCF fil
 
 res_1kg_output.txt: This file contains information about those stops that change from a stop state to a coding state.
 
-The output results file (res_output.txt) will have the following fields (separeted by tabulators):
+The output results file (res_output.txt) will have the following fields, separeted by tabulators (information between brackets corresponds to the first line of the example output):
 
-Chromosome			19Y	
-Stop position -1		1277	
-Stop position			1278	
-Trasncript ID			ENST00000426466	
-Gene ID				ENSG00000163098
-Gene type 			pc	
-Transcript type 		pc	
-Strand 				-	
-Stop ID				Stop2.10.1.2	
-Stop codon affected		TGA	
-Base affected			C	
-Original length			9	
-Extended length			54	
-Affected allele			A	
-Alternative allele		G	
-SNP id				rs34092035	
-AFR frequency			0.13	
-EUR frequency			0	
-ASN frequency			0	
-AMR frequency			0.02	
-Maximum frequency difference	0.13
+1. Chromosome (19Y)
+2. Stop position -1 (1277)
+3. Stop position (1278)
+4. Trasncript ID (ENST00000426466)
+5. Gene ID (ENSG00000163098)
+6. Gene type (pc)
+7. Transcript type (pc)
+8. Strand (-)
+9. Stop ID (Stop2.10.1.2)
+10. Stop codon affected (TGA)
+11. Base affected (C)
+12. Original length (9)
+13. Extended length (54)
+14. Affected allele (A)
+15. Alternative allele (G)
+16. SNP id (rs34092035)
+17. AFR frequency (0.13)
+18. EUR frequency (0)
+19. ASN frequency (0)
+20. AMR frequency (0.02)
+21. Maximum frequency difference (0.13)
 
-
-Other fields will be added, depending on the arguments used to run stop2go.
+Be aware that fields may be added/changed, depending on the arguments used to run stop2go.
