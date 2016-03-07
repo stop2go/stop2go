@@ -10,7 +10,7 @@ stop2go is a program designed to check for polymorphisms on stop codons that cha
 
 ## Usage
 
-To run stop2go you have to use stop2go.sh with the following arguments to run:
+To run stop2go you have to use stop2go.sh with the following arguments to run (arguments in brackets correspond to a shorter form of the longer ones):
 
 * --input (-i):   input file for the program to work. List of transcripts for the program to work. Ony ENSEMBL transcript IDs in the form ENST00000426466 are admitted.
 
