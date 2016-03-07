@@ -10,7 +10,7 @@ my ($gwas_dist, $gwas_sidpos, $gwas_gnapos);
 
 if ($gind == 1) {
 
-	$gwas_dist = $ARGV[3]-1;
+	$gwas_dist = $ARGV[3]*1000;
 
 } elsif ($gind == 2) {
 
@@ -22,12 +22,12 @@ if ($gind == 1) {
 
 } elsif ($gind == 3) {
 
-	$gwas_dist = $ARGV[3]-1;
+	$gwas_dist = $ARGV[3]*1000;
 	$gwas_sidpos = $ARGV[4]-1;
 
 } elsif ($gind == 5) {
 
-	$gwas_dist = $ARGV[3]-1;
+	$gwas_dist = $ARGV[3]*1000;
 	$gwas_gnapos = $ARGV[4]-1;
 
 } elsif ($gind == 6) {
@@ -37,19 +37,17 @@ if ($gind == 1) {
 
 } elsif ($gind == 7) {
 
-	$gwas_dist = $ARGV[3]-1;
+	$gwas_dist = $ARGV[3]*1000;
 	$gwas_sidpos = $ARGV[4]-1;
 	$gwas_gnapos = $ARGV[5]-1;
 
 } else {
 	
-	$gwas_dist = 5;
-	$gwas_sidpos = 2;
-	$gwas_gnapos = 9;
+	$gwas_dist = 5000;
+	$gwas_sidpos = 4;
+	$gwas_gnapos = 10;
 
 }
-
-my $dist = $gwas_dist*1000;
 
 my ($line, $chr, $pos, $dbSNP, $gwasline, $gwaschr, $gwaspos, $gwasdbSNP, $gwasname);
 my (@line, @data, @gwasline, @gwasdata, @range);
@@ -67,7 +65,7 @@ while(<RESDATA>) {
 	$chr = "chr$chr";
 	$pos = $line[1];
 
-	@range = ($pos-$dist,$pos+$dist);
+	@range = ($pos-$gwas_dist,$pos+$gwas_dist);
 
 	open(GWAS, "<$gwasfile");
 
@@ -85,7 +83,7 @@ while(<RESDATA>) {
 		@gwasline = split("\t", $gwasline);
 
 		$gwaschr = $gwasline[1];
-		$gwaspos = $gwasline[2];
+		$gwaspos = $gwasline[3];
 		$gwasdbSNP = $gwasline[$gwas_sidpos];
 		$gwasname = $gwasline[$gwas_gnapos];
 
