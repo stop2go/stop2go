@@ -10,6 +10,8 @@ stop2go is a program designed to check for polymorphisms on stop codons that cha
 
 ## Usage
 
+### Normal run
+
 To run stop2go you have to use stop2go.sh with the following arguments to run (arguments in brackets correspond to a shorter form of the longer ones):
 
 * --input (-i):   input file for the program to work. List of transcripts for the program to work. Ony ENSEMBL transcript IDs in the form ENST00000426466 are admitted.
@@ -20,9 +22,17 @@ To run stop2go you have to use stop2go.sh with the following arguments to run (a
 
 * --freq (-fr):  VCF file containing the frequences (only accepts 1 file).By default stop2go assumes that the frequency tags are the following: AFR_AF, EUR_AF, ASN_AF, AMR_AF. They will be displayed in this order. If you use your own tags they will be displayed in the same order you input them.
 
-Please, be aware that the fasta file of the chromosomes has to match the chromosome name on the gtf file (typically in the first field). For example, if the annotation file has "chr1" the chromosome fasta file has to be "chr1.fa". Otherwise the program will not work
+Please, be aware that the fasta file of the chromosomes has to match the chromosome name on the gtf file (typically in the first field). For example, if the annotation file has "chr1" the chromosome fasta file has to be "chr1.fa". Otherwise the program will not work.
+
+stop2go can also be used to extract the transcript id form a gtf file and format them to use with it. To do so you can use the following arguments:
+
+* --extract: gtf file with the annotation that you will use to run stop2go. It will cut the transcript id to not include the version number.
+* --extract_tag: optional argument for the extract command. It is used to search for specific transcript id tags inside the gtf file. By default stop2go searches for the transcript_id tag (eg. **transcript_id** "ENST00000426466.1") in the additional information field of a gtf file .
+* --extract_type: optional argument for the extract command. It is used to search for specific transcript id types inside the gtf file. By default stop2go searches for ENST (included ENSTR corresponding to the pseudoautosomical region of the Y chromosome) that are next to the transcript id tag (eg. transcript_id "**ENST00000426466**.1").
+
+### Run with extra information
 	
-stop2go also have the following optional commands:
+stop2go also have the following optional arguments:
 
 * --output (-o): name for the output file. If this command is not used the name will be the same as the input file.
 * --freqtag: input your custom tags for the alternative frequencies on your VCF file (separate them by commas).
